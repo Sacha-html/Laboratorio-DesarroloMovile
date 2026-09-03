@@ -15,7 +15,10 @@ La aplicación busca centralizar y facilitar el acceso a recetas tradicionales a
 ---
 
 ## 👥 Integrantes del Grupo
-- **Estudiantes:** Aparicio - Del Barrio
+- Aparicio Fernando
+- Cochis German
+- Decalli Mariano
+- Del Barrio Sacha
 - **Materia:** Laboratorio de Computación / Aplicaciones Móviles
 
 ---
