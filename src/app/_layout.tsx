@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+
 import { RecetasProvider } from '@/context/recetas-context';
 
 export default function RootLayout() {
@@ -12,7 +13,7 @@ export default function RootLayout() {
         screenOptions={{
           // Cada pantalla diseña su propio encabezado dentro del contenido.
           headerShown: false,
-          contentStyle: { backgroundColor: '#F8F9FA' }
+          contentStyle: { backgroundColor: '#F8F9FA' },
         }}
       />
     </RecetasProvider>
