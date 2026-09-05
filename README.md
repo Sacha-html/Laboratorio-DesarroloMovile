@@ -15,38 +15,51 @@ La aplicación busca centralizar y facilitar el acceso a recetas tradicionales a
 ---
 
 ## 👥 Integrantes del Grupo
-- **Estudiantes:** Aparicio - Del Barrio
+- **Grupo de cuatro integrantes:** completar con los nombres del equipo.
 - **Materia:** Laboratorio de Computación / Aplicaciones Móviles
 
 ---
 
-## 🚀 Listado de Features del Proyecto
+## 🚀 Funcionalidades del Producto
 
-Cumpliendo con la consigna de ABP (para grupos de 1 a 3 integrantes: **4 Features mínimas**):
+Para el grupo de cuatro integrantes, la actividad requiere estas **seis funcionalidades de producto**. Las pantallas y la navegación son el medio para acceder a ellas; no cuentan como funcionalidades independientes.
 
 | # | Feature | Descripción Funcional | Estado |
 |---|---|---|:---:|
-| **1** | **Consultar Listado de Recetas** | Permite visualizar las tarjetas de las recetas con ícono, nombre, categoría y tiempo de preparación. | ✅ **Implementada** |
-| **2** | **Buscar Receta por Nombre** | Permite buscar y encontrar platos en tiempo real mediante un campo de texto. | ✅ **Implementada** |
-| **3** | **Filtrar Recetas por Categoría** | Permite filtrar el catálogo según el tipo de plato (*Parrilla*, *Tradicional*, *Minutas*, *Dulces* o *Todas*). | ✅ **Implementada** |
-| **4** | **Consultar Detalle de la Receta (Segunda Vista)** | Permite abrir la pantalla de detalle para leer los ingredientes, la preparación paso a paso y regresar al catálogo con el botón *Volver al listado*. | ✅ **Implementada** |
+| **1** | **Catálogo/listado de recetas** | Muestra tarjetas con ícono, nombre, categoría y tiempo de preparación. | ✅ Implementada |
+| **2** | **Búsqueda por nombre** | Busca recetas por nombre al confirmar el texto ingresado. | ✅ Implementada |
+| **3** | **Filtro por categoría** | Filtra el catálogo por *Parrilla*, *Tradicional*, *Minutas*, *Dulces* o *Todas*. | ✅ Implementada |
+| **4** | **Detalle de receta** | Presenta ingredientes, preparación, tiempo y dificultad de la receta elegida. | ✅ Implementada |
+| **5** | **Crear receta** | Valida los datos obligatorios y agrega la receta al catálogo de la sesión. | ✅ Implementada |
+| **6** | **Gestionar favoritos** | Permite marcar o desmarcar recetas y ver sólo las favoritas. | ✅ Implementada |
+
+> **Limitación actual:** las recetas creadas y los favoritos existen sólo mientras la app está en ejecución. Al reiniciarla se restauran las cuatro recetas iniciales y se vacían los favoritos. La persistencia en una base de datos se incorporará en una etapa futura.
 
 ---
 
-## 📱 Estructura de Vistas y Assets
+## 📱 Uso y Estructura
 
-- **Vista 1: Catálogo Principal**
+- **Catálogo principal (`src/app/recetas.tsx`)**
   - **Portada:** Imagen de cabecera (`assets/Imagenes/Sacha2.jpeg`).
   - **Fondo:** Imagen de fondo (`assets/Imagenes/fondo3.jpeg`).
   - **Buscador de texto.**
   - **Filtros por categoría.**
   - **Lista de recetas.**
 
-- **Vista 2: Detalle de la Receta**
-  - **Botón `⬅ Volver al listado`** (evento `volverAlListado`).
+- **Detalle de receta (`src/app/receta/[id].tsx`)**
+  - Botón para volver al listado.
   - **Datos:** Nombre, categoría, tiempo y dificultad.
   - **Lista de ingredientes.**
   - **Preparación paso a paso.**
+
+- **Nueva receta (`src/app/receta/nueva.tsx`)**
+  - Formulario con campos obligatorios y mensajes de validación.
+
+- **Favoritos (`src/app/favoritos.tsx`)**
+  - Lista de recetas marcadas o mensaje cuando todavía no hay ninguna.
+
+- **Estado compartido (`src/context/recetas-context.tsx`)**
+  - Mantiene las recetas creadas y los favoritos sólo en memoria durante la sesión.
 
 ---
 
