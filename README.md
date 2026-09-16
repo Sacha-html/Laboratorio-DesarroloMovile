@@ -57,3 +57,23 @@ npx expo start
 
 - Presiona `w` en la consola para probarla en el navegador.
 - O escanea el codigo QR con la app Expo Go en tu celular.
+
+### Ejecutar en Android Studio
+
+1. Abrir **Android Studio** y encender un emulador desde **Device Manager**.
+2. Esperar a que el emulador termine de iniciar y muestre la pantalla principal.
+3. En otra terminal, ubicarse en la carpeta del proyecto:
+
+   ```powershell
+   cd D:\REPOSITORIOS\Laboratorio-DesarroloMovile
+   ```
+
+4. Iniciar Expo:
+
+   ```bash
+   npx expo start
+   ```
+
+5. Cuando aparezca el menu de Expo en la terminal, presionar `a` para abrir la aplicacion en el emulador Android.
+
+> **Importante:** para este flujo no es necesario presionar el boton de ejecucion `▶` de Android Studio. Ese boton inicia una compilacion nativa y requiere configurar Java (`JAVA_HOME`).
