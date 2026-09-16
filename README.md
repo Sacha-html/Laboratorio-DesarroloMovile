@@ -1,97 +1,79 @@
-# 🇦🇷 Proyecto ABP – Aplicación Móvil: Recetario Argentino
+# Proyecto ABP - Aplicacion Movil: Recetario Argentino
 
-Aplicación móvil desarrollada bajo la metodología de **Aprendizaje Basado en Proyectos (ABP)** para la materia de desarrollo de aplicaciones móviles.
+Aplicacion movil desarrollada bajo la metodologia de **Aprendizaje Basado en Proyectos (ABP)** para la materia de desarrollo de aplicaciones moviles.
 
----
+## Nombre del Proyecto
+**Recetario Argentino - Comidas Tipicas y Tradicionales**
 
-## 📌 Nombre del Proyecto
-**Recetario Argentino — Comidas Típicas y Tradicionales**
+## Descripcion del Proyecto y Problemática
+La aplicacion centraliza recetas tradicionales argentinas y permite buscar, filtrar y consultar sus ingredientes y pasos de preparacion desde una interfaz simple y visual.
 
----
-
-## 📖 Descripción del Proyecto y Problemática
-La aplicación busca centralizar y facilitar el acceso a recetas tradicionales argentinas (*Asado Criollo*, *Empanadas Mendocinas*, *Milanesa Napolitana*, *Alfajores de Maicena*). Resuelve la dispersión de información mediante una interfaz moderna, visual y fluida que permite buscar platos en tiempo real, filtrar por categorías criollas y navegar al detalle de cada plato para consultar sus ingredientes y pasos de preparación con soporte de navegación nativa.
-
----
-
-## 👥 Integrantes del Grupo
+## Integrantes del Grupo
 - Aparicio Fernando
 - Cochis German
 - Decalli Mariano
 - Del Barrio Sacha
-- **Materia:** Laboratorio de Computación / Aplicaciones Móviles
+- **Materia:** Laboratorio de Computacion / Aplicaciones Moviles
 
----
+## Funcionalidades del Producto
 
-## 🚀 Listado de Features del Proyecto
+Para el grupo de cuatro integrantes, la actividad requiere estas **seis funcionalidades de producto**. Las pantallas y la navegacion son el medio para acceder a ellas; no cuentan como funcionalidades independientes.
 
-Cumpliendo con las consignas del ABP (**4 Features mínimas** requeridas):
-
-| # | Feature | Descripción Funcional | Estado |
+| # | Feature | Descripcion Funcional | Estado |
 |---|---|---|:---:|
-| **1** | **Consultar Catálogo de Recetas** | Visualización interactiva de tarjetas con ícono, nombre, categoría y tiempo de cocción. | ✅ **Implementada** |
-| **2** | **Buscador en Tiempo Real** | Filtrado instantáneo por nombre de receta mediante campo de texto reactivo. | ✅ **Implementada** |
-| **3** | **Filtros por Categoría** | Barra horizontal de chips (*Todas*, *Parrilla*, *Tradicional*, *Minutas*, *Dulces*). | ✅ **Implementada** |
-| **4** | **Detalle Dinámico de Receta** | Pantalla dedicada con navegación nativa (Expo Router `Stack`), ingredientes, preparación y botón de retorno. | ✅ **Implementada** |
+| **1** | **Catalogo/listado de recetas** | Muestra tarjetas con icono, nombre, categoria y tiempo de preparacion. | Implementada |
+| **2** | **Busqueda por nombre** | Busca recetas por nombre al confirmar el texto ingresado. | Implementada |
+| **3** | **Filtro por categoria** | Filtra el catalogo por *Parrilla*, *Tradicional*, *Minutas*, *Dulces* o *Todas*. | Implementada |
+| **4** | **Detalle de receta** | Presenta ingredientes, preparacion, tiempo y dificultad de la receta elegida. | Implementada |
+| **5** | **Crear receta** | Valida los datos obligatorios y agrega la receta al catalogo de la sesion. | Implementada |
+| **6** | **Gestionar favoritos** | Permite marcar o desmarcar recetas y ver solo las favoritas. | Implementada |
 
----
+> **Limitacion actual:** las recetas creadas y los favoritos existen solo mientras la app esta en ejecucion. Al reiniciarla se restauran las cuatro recetas iniciales y se vacian los favoritos.
 
-## 🏗️ Arquitectura del Proyecto
+## Uso y Estructura
 
-El código está estructurado siguiendo los principios de **separación de responsabilidades** y las convenciones de **Expo Router**:
+- **Bienvenida (`src/app/index.tsx`)**: acceso al recetario.
+- **Catalogo (`src/app/recetas.tsx`)**: buscador, filtros y listado de recetas.
+- **Detalle (`src/app/receta/[id].tsx`)**: ingredientes, pasos y accion de favoritos.
+- **Nueva receta (`src/app/receta/nueva.tsx`)**: formulario con validacion de campos obligatorios.
+- **Favoritos (`src/app/favoritos.tsx`)**: lista de recetas marcadas o mensaje vacio.
+- **Estado compartido (`src/context/recetas-context.tsx`)**: conserva las recetas creadas y los favoritos en memoria durante la sesion.
 
-```text
-movile/
-├── assets/
-│   └── Imagenes/              # Recursos gráficos (fondo3.jpeg, Sacha2.jpeg)
-├── src/
-│   ├── constants/
-│   │   └── recetas.ts         # Modelo de datos (interface Receta), catálogo y categorías
-│   └── app/
-│       ├── _layout.tsx        # Configuración del Stack de navegación global
-│       ├── index.tsx          # Pantalla principal (Catálogo, buscador y filtros)
-│       └── receta/
-│           └── [id].tsx       # Pantalla de detalle con ruta dinámica (/receta/:id)
-├── app.json                   # Configuración del proyecto Expo
-├── package.json               # Dependencias del proyecto
-└── tsconfig.json              # Configuración de TypeScript
-```
+## Tecnologias
+- **Expo & React Native** (v57)
+- **Expo Router**
+- **React Native Safe Area Context**
+- **TypeScript**
 
-### Flujo de la Información (Data Flow):
-1. **`src/constants/recetas.ts`**: Es la única fuente de la verdad para los datos (`RECETAS`) y su tipado (`Receta`).
-2. **`src/app/index.tsx`**: Consume los datos, aplica los filtros de búsqueda/categoría y al seleccionar una receta navega mediante `router.push('/receta/[id]')`.
-3. **`src/app/receta/[id].tsx`**: Captura el parámetro dinámico `id` mediante `useLocalSearchParams()`, localiza la receta correspondiente y despliega sus ingredientes y preparación con soporte del botón "Atrás" nativo de Android e iOS.
+## Instrucciones para Ejecutar
 
----
-
-## 🛠️ Tecnologías Utilizadas
-
-- **Framework:** [Expo SDK 57](https://expo.dev/) & [React Native](https://reactnative.dev/) (0.86)
-- **Navegación:** [Expo Router](https://docs.expo.dev/router/introduction/) (File-based routing nativo con `Stack`)
-- **Lenguaje:** [TypeScript](https://www.typescriptlang.org/)
-- **Safe Area:** `react-native-safe-area-context` para visualización adecuada en cualquier dispositivo móvil.
-
----
-
-## 💻 Instalación y Ejecución
-
-### 1. Clonar el repositorio y ubicarse en el proyecto
 ```bash
-git clone https://github.com/Sacha-html/Laboratorio-DesarroloMovile.git
-cd movile
-```
-
-### 2. Instalar dependencias
-```bash
+# 1. Instalar dependencias
 npm install
+
+# 2. Iniciar la aplicacion
+npx expo start
 ```
 
-### 3. Iniciar el servidor de desarrollo
-```bash
-npx expo start -c
-```
+- Presiona `w` en la consola para probarla en el navegador.
+- O escanea el codigo QR con la app Expo Go en tu celular.
 
-### 4. Probar la aplicación:
-- **En Android (Emulador o Dispositivo Físico):** Presiona `a` en la terminal o escanea el código QR con la app **Expo Go**.
-- **En la Web:** Presiona `w` en la consola para abrirla en el navegador.
-- **En iOS:** Presiona `i` en macOS o escanea el código QR desde la cámara de iOS para abrir en **Expo Go**.
+### Ejecutar en Android Studio
+
+1. Abrir **Android Studio** y encender un emulador desde **Device Manager**.
+2. Esperar a que el emulador termine de iniciar y muestre la pantalla principal.
+3. En otra terminal, ubicarse en la carpeta del proyecto:
+
+   ```powershell
+   cd D:\REPOSITORIOS\Laboratorio-DesarroloMovile
+   ```
+
+4. Iniciar Expo:
+
+   ```bash
+   npx expo start
+   ```
+
+5. Cuando aparezca el menu de Expo en la terminal, presionar `a` para abrir la aplicacion en el emulador Android.
+
+> **Importante:** para este flujo no es necesario presionar el boton de ejecucion `▶` de Android Studio. Ese boton inicia una compilacion nativa y requiere configurar Java (`JAVA_HOME`).
